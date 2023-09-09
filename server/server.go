@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-oauth2/oauth2/v4"
-	"github.com/go-oauth2/oauth2/v4/errors"
+	"github.com/ruscalworld/go-oauth/v4"
+	"github.com/ruscalworld/go-oauth/v4/errors"
 )
 
 // NewDefaultServer create a default authorization server
