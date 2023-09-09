@@ -51,6 +51,8 @@ type (
 
 	// ResponseTokenHandler response token handing
 	ResponseTokenHandler func(w http.ResponseWriter, data map[string]interface{}, header http.Header, statusCode ...int) error
+
+	RedirectHandler func(w http.ResponseWriter, req *AuthorizeRequest, data map[string]interface{}) error
 )
 
 // ClientFormHandler get client data from form

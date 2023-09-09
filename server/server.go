@@ -56,6 +56,7 @@ type Server struct {
 	AccessTokenExpHandler        AccessTokenExpHandler
 	AuthorizeScopeHandler        AuthorizeScopeHandler
 	ResponseTokenHandler         ResponseTokenHandler
+	RedirectHandler              RedirectHandler
 }
 
 func (s *Server) handleError(w http.ResponseWriter, req *AuthorizeRequest, err error) error {
@@ -76,6 +77,10 @@ func (s *Server) redirectError(w http.ResponseWriter, req *AuthorizeRequest, err
 }
 
 func (s *Server) redirect(w http.ResponseWriter, req *AuthorizeRequest, data map[string]interface{}) error {
+	if s.RedirectHandler != nil {
+		return s.RedirectHandler(w, req, data)
+	}
+
 	uri, err := s.GetRedirectURI(req, data)
 	if err != nil {
 		return err
