@@ -119,6 +119,11 @@ func (s *Server) token(w http.ResponseWriter, data map[string]interface{}, heade
 
 // GetRedirectURI get redirect uri
 func (s *Server) GetRedirectURI(req *AuthorizeRequest, data map[string]interface{}) (string, error) {
+	return GetRedirectURI(req, data)
+}
+
+// GetRedirectURI get redirect uri
+func GetRedirectURI(req *AuthorizeRequest, data map[string]interface{}) (string, error) {
 	u, err := url.Parse(req.RedirectURI)
 	if err != nil {
 		return "", err
